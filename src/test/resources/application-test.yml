@@ -1,0 +1,18 @@
+spring:
+ test:
+  database:      #@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) 
+   replace: none # By default DataJpaTest replaces your DataSource with an embedded database but you don't have one.
+ datasource:
+  url: jdbc:mysql://localhost:3306/student_test_db
+  username: root
+  password: rainbow
+  driver-class-name: com.mysql.cj.jdbc.Driver
+ jpa:
+   database: mysql
+   #database-platform: org.hibernate.dialect.MySQLDialect
+   show-sql: true
+   hibernate:
+    ddl-auto: validate #create-drop,none,create,validate 
+   properties:
+    hibernate:
+     #format_sql: true

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>HTML Forms</h2>
+
+<form th:action="@{/api/v2/students/new2}" th:method="post" th:object="${student}">
+	
+  <label for="fname">ferstname:</label><br>
+  <input type="text" id="ferstname" name="ferstname" value="fikov"><br><br>
+  <div style="color: red;" th:if="${#fields.hasErrors('ferstname')}" th:errors="*{ferstname}"> Error Name </div>
+  <label for="lname">lastname:</label><br>
+  <input type="text" id="lastname" name="lastname" value="Alex"><br><br>
+  <div style="color: red;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"> Error Name </div>
+  <label for="fname">dateofberth:</label><br>
+  <input type="text" id="dateofberth" name="dateofberth" value="1979-10-24"><br><br>
+  <label for="email">email:</label><br>
+  <input type="text" id="email" name="email" value="fikov@list.ru"><br><br>
+  <div style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Error email </div>
+    
+  <input type="submit" value="Create">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+</body>
+</html>
