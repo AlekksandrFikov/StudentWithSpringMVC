@@ -20,6 +20,6 @@ public class CastomAuthenticationManager implements AuthenticationManager{
 		if (customAuthenticationProvider.supports(authentication.getClass())) {
 			return customAuthenticationProvider.authenticate(authentication);
 		}
-			return null;
+			return authentication;
 	}
 }

@@ -2,6 +2,7 @@ package ru.kors.springstudents.security.filters;
 
 import java.io.IOException;
 
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -24,13 +25,27 @@ public class CastomAuthenticationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
-		var key = String.valueOf(request.getHeader("key"));
-		var castomAuthentication = new CastomAuthentication(false, key);
-		var authentication = castomAuthenticationManager.authenticate(castomAuthentication);
+		var requestKey = String.valueOf(request.getHeader("x-api-key"));
 		
-		if (authentication.isAuthenticated()) {
-			SecurityContextHolder.getContext().setAuthentication(authentication);
+		if ("null".equals(requestKey) || requestKey == null) {
 			filterChain.doFilter(request, response);
+		} 
+		
+		var castomAuthentication = new CastomAuthentication(false, requestKey);
+		
+		try {
+			var authentication = castomAuthenticationManager.authenticate(castomAuthentication);
+		
+			if (authentication.isAuthenticated()) {
+				SecurityContextHolder.getContext().setAuthentication(authentication);
+				filterChain.doFilter(request, response);
+			} else {
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			}
+		} 
+		catch (AuthenticationException e) {
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		}
+		
 	}
 }
