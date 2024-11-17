@@ -30,8 +30,8 @@ public class CustomAuthenticationProvider implements  AuthenticationProvider {
 	}
 
 	@Override
-	public boolean supports(Class<?> authentication) {
-		return CastomAuthentication.class.equals(authentication);
+	public boolean supports(Class<?> authenticationClass) {
+		return CastomAuthentication.class.equals(authenticationClass);
 	}
 
 }

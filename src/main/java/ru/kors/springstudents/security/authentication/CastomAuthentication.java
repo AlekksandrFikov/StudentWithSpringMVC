@@ -17,6 +17,18 @@ public class CastomAuthentication implements Authentication {
 	private final boolean authenticationFlag;
 	private final String key;
 	
+	
+	@Override
+	public boolean isAuthenticated() {
+		return authenticationFlag;
+	}
+	
+	@Override
+	public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
@@ -46,16 +58,7 @@ public class CastomAuthentication implements Authentication {
 		// TODO Auto-generated method stub
 		return null;
 	}
+ 
 
-	@Override
-	public boolean isAuthenticated() {
-		return authenticationFlag;
-	}
-
-	@Override
-	public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
