@@ -2,3 +2,5 @@
 spring:
  profiles:
   active: dev
+
+MyProgect.very.secret.key: keyValue
