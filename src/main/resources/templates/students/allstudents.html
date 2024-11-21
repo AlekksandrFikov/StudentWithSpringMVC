@@ -1,24 +1,47 @@
 <!DOCTYPE HTML>
+
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/table.css" type="text/css" />
+	<!-- <link rel="stylesheet" th:href="@{/css/table.css}"/> -->
+
 </head>
 <body>
-    	
-	<p>**********[All Students]*************</p>
+
+<h1>[All Students]</h1>
+<table class="table">
 	
-	<tr th:each="student: ${students}">
-	    <td th:text="| ${student.id} | "/>
-	    <td th:text="${student.ferstname} | " />
-		<td th:text="${student.lastname} | " />
-		<td th:text="${student.dateofberth} | "/>
-		<td th:text="${student.email} | " />
-		<td th:text="${student.age} | "/>
-		<br>
-	</tr>
-	
-	
-	
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Last name</th>
+			<th>Ferst name</th>
+			<th>Date of berth</th>
+			<th>Email</th>
+			<th>Age</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="student: ${students}">
+			    <td th:text="${student.id}"/>
+			    <td th:text="${student.ferstname}" />
+				<td th:text="${student.lastname}" />
+				<td th:text="${student.dateofberth}"/>
+				<td th:text="${student.email}"/>
+				<td th:text="${student.age}"/>
+		</tr>
+	</tbody>
+</table>
+
+<nav>
+	<ul>
+		<li><a href="/api/v2/students">All students</a></li>
+		<li><a href="/api/v2/students/new">New student</a></li>
+	</ul>
+</nav>	    	
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 
+
 spring:
  profiles:
   active: dev
-
+ resources.web.resources.add-mappings: true
 MyProgect.very.secret.key: keyValue

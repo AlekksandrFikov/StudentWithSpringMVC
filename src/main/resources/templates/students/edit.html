@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<head> 
+
+  <title>Edit student</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/css/form.css" type="text/css" />
+  <link rel="stylesheet" href="/css/modal.css" type="text/css" />
+
+</head>
+
 <body>
 
-<h2>HTML Forms</h2>
+<div class="modal">
+<h2>Edit student:</h2>
 
 <form th:action="@{/api/v2/students/{email}(email=${student.getEmail()})}" th:method="PATCH" th:object="${student}">
 	
@@ -11,19 +22,21 @@
   <label for="fname">ferstname:</label><br>
   <input type="text" id="ferstname" name="ferstname" th:field="*{ferstname}">
   <div style="color: red;" th:if="${#fields.hasErrors('ferstname')}" th:errors="*{ferstname}"> Error Name </div><br><br>  
+  
   <label for="lname">lastname:</label><br>
   <input type="text" id="lastname" name="lastname" th:field="*{lastname}">
   <div style="color: red;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"> Error Name </div><br><br>
+  
   <label for="dateofberth">dateofberth:</label><br>
   <input type="text" id="dateofberth" name="dateofberth" th:field="*{dateofberth}"><br><br>
+  
   <label for="email">email:</label><br>
   <input type="text" id="email" name="email" th:field="*{email}">
   <div style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Error email </div><br><br>
     
   <input type="submit" value="Edit">
 </form> 
-
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+</div>
 
 </body>
 </html>

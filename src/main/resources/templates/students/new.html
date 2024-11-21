@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+	
+<head> 
+
+  <title>New student</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/css/form.css" type="text/css" />
+  <link rel="stylesheet" href="/css/modal.css" type="text/css" />
+
+
+</head>
+
 <body>
 
-<h2>HTML Forms</h2>
 
-<form th:action="@{/api/v2/students/new}" th:method="post" th:object="${student}">
+<div class="modal">
+<h2>Add student:</h2>
+
+<form  th:action="@{/api/v2/students/new}" th:method="post" th:object="${student}">
 	
-  <label for="fname">ferstname:</label><br>
-  <input type="text" id="ferstname" name="ferstname" value="fikov"><br><br>
+  <label for="fname">Ferst name:</label><br>
+  <input type="text" id="ferstname" name="ferstname" value="Fikov"><br><br>
   <div style="color: red;" th:if="${#fields.hasErrors('ferstname')}" th:errors="*{ferstname}"> Error Name </div>
-  <label for="lname">lastname:</label><br>
+
+  <label for="lname">Last name:</label><br>
   <input type="text" id="lastname" name="lastname" value="Alex"><br><br>
   <div style="color: red;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"> Error Name </div>
-  <label for="fname">dateofberth:</label><br>
+  
+  <label for="fname">Date of berth:</label><br>
   <input type="text" id="dateofberth" name="dateofberth" value="1979-10-24"><br><br>
-  <label for="email">email:</label><br>
+  
+  <label for="email">Email:</label><br>
   <input type="text" id="email" name="email" value="fikov@list.ru"><br><br>
   <div style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Error email </div>
     
-  <input type="submit" value="Create">
+  <input type="submit" value="Add">
 </form> 
+</div>
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
 
 </body>
 </html>
